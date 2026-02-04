@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pytanie</title>
+
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #ff5f9e, #ffc371);
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+.container {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+h1 {
+    margin-bottom: 30px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+button {
+    font-size: 20px;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#yes {
+    background-color: #4CAF50;
+    color: white;
+}
+
+#no {
+    background-color: #f44336;
+    color: white;
+}
+
+#message {
+    margin-top: 20px;
+    font-size: 18px;
+    color: #f44336;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>Czy zostaniesz moją pół-walentynką????</h1>
+    <h2>Zeby nikt inny sie nie mógł spytac:))))</h2>
+
+    <div class="buttons">
+        <button id="yes">TAK</button>
+        <button id="no">NIE</button>
+    </div>
+
+    <div id="message"></div>
+</div>
+
+<script>
+let noScale = 1;
+let yesScale = 1;
+
+const noBtn = document.getElementById("no");
+const yesBtn = document.getElementById("yes");
+const message = document.getElementById("message");
+
+noBtn.addEventListener("click", () => {
+    message.textContent = "Na pewno nie? 🥺";
+
+    noScale -= 0.1;
+    yesScale += 0.1;
+
+    if (noScale < 0.2) noScale = 0.2;
+
+    noBtn.style.transform = `scale(${noScale})`;
+    yesBtn.style.transform = `scale(${yesScale})`;
+});
+
+yesBtn.addEventListener("click", () => {
+    document.body.innerHTML = `
+        <div style="
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            height:100vh;
+            font-size:32px;
+            background:linear-gradient(135deg, #ff5f9e, #ffc371);
+            color:white;
+            text-align:center;
+            padding:20px;
+        ">
+        DZIEKI PIPKO wiedziałem ze sie zgodzisz
+        </div>
+    `;
+});
+</script>
+
+</body>
+</html>
